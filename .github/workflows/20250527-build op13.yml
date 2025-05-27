@@ -390,6 +390,7 @@ jobs:
               echo "CONFIG_ZRAM_WRITEBACK=y" >> "$CONFIG_FILE"
             fi
           fi
+        
 
       - name: Build Kernel
         run: |
@@ -412,7 +413,7 @@ jobs:
          rm -rf ./AnyKernel3/.git
          rm -rf ./AnyKernel3/push.sh
          cp kernel_workspace/kernel_platform/dist/Image ./AnyKernel3/
-          fi
+      
 
       - name: Apply patch_linux and replace Image
         run: |
