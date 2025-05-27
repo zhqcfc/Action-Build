@@ -1,4 +1,4 @@
-name: Build OnePlus_SukiSU Ultra All
+name: Build 20250527
 on:
   workflow_dispatch:
     inputs:
