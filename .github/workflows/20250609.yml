@@ -68,7 +68,7 @@ on:
        type: choice
        description: "内核版本"
        required: true
-       default: "5.15"
+       default: "6.6"
        options:
          - "5.10"
          - "5.15"
