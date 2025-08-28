@@ -6,7 +6,7 @@ on:
         type: choice
         description: "配置文件"
         required: true
-        default: oneplus_ace2_pro_v
+        default: oneplus_13
         options:
           - oneplus_nord_ce4_lite_5g_v
           - oneplus_nord_ce4_v
@@ -56,13 +56,13 @@ on:
       KSU_META:
         type: string
         description: "分支名(不可留空)/自定义版本标识(留空不修改)"
-        required: false
-        default: "susfs-main/Numbersf"
+        required: true
+        default: "susfs-main/Mz"
       BUILD_TIME:
         type: string
         description: "自定义构建时间 (输入F使用当前时间)"
-        required: false
-        default: "Sun Jun 15 14:56:02 UTC 2025"
+        required: true
+        default: "F"
       SUFFIX:
         type: string
         description: "自定义内核后缀 (不输入使用随机字符串)"
@@ -82,12 +82,12 @@ on:
         type: boolean
         description: "是否添加风驰驱动？"
         required: true
-        default: false
+        default: true
       ZRAM:
         type: boolean
         description: "是否添加更多ZRAM算法？"
         required: true
-        default: false
+        default: true
 
 jobs:
   build:
@@ -490,8 +490,8 @@ jobs:
           KSU_API_VERSION=$(curl -fsSL "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/$BRANCH_NAME/kernel/Makefile" | \
             grep -m1 "KSU_VERSION_API :=" | awk -F'= ' '{print $2}' | tr -d '[:space:]')
 
-          if [[ -z "$KSU_API_VERSION" || "$(printf '%s\n' "$KSU_API_VERSION" "3.1.7" | sort -V | head -n1)" != "3.1.7" ]]; then
-            KSU_API_VERSION="3.1.7"
+          if [[ -z "$KSU_API_VERSION" || "$(printf '%s\n' "$KSU_API_VERSION" "3.1.9" | sort -V | head -n1)" != "3.1.9" ]]; then
+            KSU_API_VERSION="3.1.9"
           fi
 
           echo "KSU_API_VERSION=$KSU_API_VERSION" >> $GITHUB_ENV
